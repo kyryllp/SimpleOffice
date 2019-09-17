@@ -41,18 +41,5 @@ class MemberSerializer(serializers.ModelSerializer):
             'project',
             'manager_id',
             'workhours',
-            'on_holidays',
             'on_holidays_till',
-        )
-
-
-class MemberAvailabilitySerializer(serializers.ModelSerializer):
-    """
-    This serializer is created for getting users by availability
-    """
-
-    class Meta:
-        model = Member
-        fields = (
-            'on_holidays',
         )

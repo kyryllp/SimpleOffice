@@ -1,12 +1,9 @@
-from django.shortcuts import render
+from django_filters import rest_framework as filters
 from rest_framework import viewsets
-from rest_framework.decorators import action, api_view
-from rest_framework.generics import ListAPIView
-from rest_framework.response import Response
-from rest_framework.views import APIView
 
+from members.filters import MembersFilter
 from members.models import WorkHours, Member
-from members.serializers import WorkHoursSerializer, MemberSerializer, MemberAvailabilitySerializer
+from members.serializers import WorkHoursSerializer, MemberSerializer
 
 
 class WorkHoursViewSet(viewsets.ModelViewSet):
@@ -17,3 +14,6 @@ class WorkHoursViewSet(viewsets.ModelViewSet):
 class MembersViewSet(viewsets.ModelViewSet):
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
+
+    filter_backends = (filters.DjangoFilterBackend, )
+    filterset_class = MembersFilter

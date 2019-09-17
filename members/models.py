@@ -41,10 +41,6 @@ class Member(models.Model):
         blank=True, null=True
     )
 
-    @property
-    def on_holidays(self) -> bool:
-        return False if self.on_holidays_till is None else True
-
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 

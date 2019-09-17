@@ -1,3 +1,4 @@
 django-timezone-field
 djangorestframework
 drf-yasg
+django-filter
