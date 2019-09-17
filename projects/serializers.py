@@ -10,3 +10,11 @@ class ProjectSerializer(serializers.ModelSerializer):
             'id',
             'name'
         )
+
+
+class ProjectIdSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields = (
+            'id',
+        )
