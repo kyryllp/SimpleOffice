@@ -1,0 +1,7 @@
+.idea
+.gitignore
+db.sqlite3
+venv
+members/migrations
+projects/migrations
+skills/migrations

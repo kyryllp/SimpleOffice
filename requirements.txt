@@ -1,0 +1,3 @@
+django-timezone-field
+djangorestframework
+drf-yasg
