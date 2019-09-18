@@ -5,4 +5,4 @@ WORKDIR /code
 COPY requirements.txt /code/
 RUN pip install -r requirements.txt
 COPY . /code/
-COPY init.sql /docker-entrypoint-initdb.d/
+COPY postgres-docker/init.sql /docker-entrypoint-initdb.d/
