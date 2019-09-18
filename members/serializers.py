@@ -27,9 +27,9 @@ class WorkHoursSerializer(serializers.ModelSerializer):
 
 
 class MemberSerializer(serializers.ModelSerializer):
-    skills = SkillSerializer(many=True)
-    project = ProjectSerializer()
-    workhours = WorkHoursSerializer()
+    skills = SkillSerializer(many=True, read_only=True)
+    project = ProjectSerializer(read_only=True)
+    workhours = WorkHoursSerializer(read_only=True)
 
     class Meta:
         model = Member

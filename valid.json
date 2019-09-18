@@ -1,0 +1,16 @@
+{
+  "first_name": "Test",
+  "last_name": "User",
+  "skills": [],
+  "project": {
+    "id": 1,
+    "name": "JetBridgeTest"
+  },
+  "manager_id": 1,
+  "workhours": {
+    "id": 1,
+    "start": "09:00:00",
+    "end": "18:00:00"
+  },
+  "on_holidays_till": "2019-09-20"
+}

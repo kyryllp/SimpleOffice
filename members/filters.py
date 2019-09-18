@@ -7,7 +7,7 @@ from members.models import Member
 
 class MembersFilter(filters.FilterSet):
     skills = filters.BaseInFilter(field_name='skills__name')
-    is_available = filters.BooleanFilter(method='filter_is_available')
+    holidays = filters.BooleanFilter(method='filter_is_on_holidays')
     is_working = filters.BooleanFilter(method='filter_is_working')
 
     class Meta:
@@ -15,15 +15,15 @@ class MembersFilter(filters.FilterSet):
         fields = (
             'skills',
             'project',
-            # 'is_available',
-            # 'is_working',
+            'holidays',
+            'is_working',
         )
 
-    def filter_is_available(self, queryset, name, value):
+    def filter_is_on_holidays(self, queryset, name, value):
         if value:
-            return queryset.filter(Q(on_holidays_till__isnull=True) | Q(on_holidays_till__lt=datetime.now()))
+            return queryset.filter(Q(on_holidays_till__isnull=False) | Q(on_holidays_till__gt=datetime.now()))
+        return queryset.filter(Q(on_holidays_till__isnull=True) | Q(on_holidays_till__lt=datetime.now()))
 
-        return queryset.filter(Q(on_holidays_till__isnull=False) | Q(on_holidays_till__gt=datetime.now()))
 
     def filter_is_working(self, queryset, name, value):
         if value:
