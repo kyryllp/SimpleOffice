@@ -78,7 +78,7 @@ class CreateNewProjectTest(TestCase):
 
 
 class UpdateSingleProjectTest(TestCase):
-    """ Test module for updating an existing skill record """
+    """ Test module for updating an existing project record """
 
     def setUp(self):
         self.test = Project.objects.create(
@@ -108,7 +108,7 @@ class UpdateSingleProjectTest(TestCase):
 
 
 class DeleteSingleProjectTest(TestCase):
-    """ Test module for deleting an existing skill record """
+    """ Test module for deleting an existing project record """
 
     def setUp(self):
         self.test = Project.objects.create(

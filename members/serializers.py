@@ -27,6 +27,8 @@ class WorkHoursSerializer(serializers.ModelSerializer):
 
 
 class MemberSerializer(serializers.ModelSerializer):
+    # read_only = True is set to be able to create models via POST requests
+    # because django doesn't support nested creation
     skills = SkillSerializer(many=True, read_only=True)
     project = ProjectSerializer(read_only=True)
     workhours = WorkHoursSerializer(read_only=True)

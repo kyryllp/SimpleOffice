@@ -31,6 +31,7 @@ class GetAllMembersTest(TestCase):
 
 
 class GetMembersByFilters(TestCase):
+    """ Test module for getting all users by filters """
 
     def setUp(self) -> None:
         self.js = Skill.objects.create(
@@ -136,7 +137,8 @@ class CreateNewMemberTest(TestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
 
-class AssignMemberToProjectTest(TestCase):  # TODO
+class AssignMemberToProjectTest(TestCase):
+    """ Test module to test assigning member to the project"""
 
     def setUp(self) -> None:
         self.project = Project.objects.create(

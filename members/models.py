@@ -8,6 +8,7 @@ from timezone_field import TimeZoneField
 
 class Member(models.Model):
 
+
     first_name = models.CharField(max_length=50)
 
     last_name = models.CharField(max_length=50)
@@ -23,13 +24,13 @@ class Member(models.Model):
         blank=True, null=True,
     )
 
-    manager_id = models.ForeignKey(
+    manager_id = models.ForeignKey(  # OneToMany
         'self',
         on_delete=models.SET_NULL,
         blank=True, null=True,
     )
 
-    workhours = models.ForeignKey(
+    workhours = models.ForeignKey(  # OneToMany (a lot of people have the same work schedule)
         'WorkHours',
         on_delete=models.CASCADE,
         blank=True, null=True,

@@ -6,6 +6,9 @@ from members.models import Member
 
 
 class MembersFilter(filters.FilterSet):
+    """
+    Filterset to filter members by skills, holiday and working hours
+    """
     skills = filters.BaseInFilter(field_name='skills__name')
     holidays = filters.BooleanFilter(method='filter_is_on_holidays')
     is_working = filters.BooleanFilter(method='filter_is_working')

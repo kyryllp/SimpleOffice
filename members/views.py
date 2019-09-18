@@ -26,6 +26,11 @@ class MembersViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=['POST', ], serializer_class=ProjectIdSerializer)
     def assign_to_project(self, request, pk=None):
+        """
+        URL: /members/{id}/assign_to_project/
+        :param pk: id of the member we're assigning to the project
+        :return: Response
+        """
         member = get_object_or_404(Member, pk=pk)
         project = get_object_or_404(Project, pk=request.data['id'])
 
