@@ -68,7 +68,8 @@ class GetMembersByFilters(TestCase):
         self.assertEqual(response.data['count'], 1)
 
     def test_get_by_project(self):
-        response = client.get(reverse('members-list') + '?project={}'.format(self.js.pk))
+        response = client.get(reverse('members-list') + '?project={}'.format(self.project.pk))
+        print(response)
         self.assertEqual(response.data['count'], 1)
 
     def test_get_by_holidays(self):
@@ -186,20 +187,8 @@ class UpdateSingleMemberTest(TestCase):
             last_name='Pupkin',
         )
         self.valid_payload = {
-            "first_name": "Vasya",
+            "first_name": "Vasiliy",
             "last_name": "Pupkin",
-            "skills": [],
-            "project": {
-                "id": 1,
-                "name": "JetBridgeTest"
-            },
-            "manager_id": 1,
-            "workhours": {
-                "id": 1,
-                "start": "09:00:00",
-                "end": "18:00:00"
-            },
-            "on_holidays_till": "2019-09-20"
         }
         self.invalid_payload = {
             'first_name': '',
@@ -326,14 +315,15 @@ class UpdateSingleWorkHoursInstanceTest(TestCase):
         )
 
         self.valid_payload = {
-            "start": "01:00:00"
+            "start": "18:00:00",
+            "end": "23:00:00"
         }
 
         self.invalid_payload = {
             "start": ""
         }
 
-    def test_valid_update_skill(self):
+    def test_valid_update_workhours(self):
         response = client.put(
             reverse('workhours-detail', kwargs={'pk': self.work_hours.pk}),
             data=json.dumps(self.valid_payload),
@@ -341,7 +331,7 @@ class UpdateSingleWorkHoursInstanceTest(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    def test_invalid_update_skill(self):
+    def test_invalid_update_workhours(self):
         response = client.put(
             reverse('workhours-detail', kwargs={'pk': self.work_hours.pk}),
             data=json.dumps(self.invalid_payload),

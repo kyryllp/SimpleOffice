@@ -25,7 +25,7 @@ SECRET_KEY = 'e4r@s6ux39ql0e_7pfl_ip3ezwpt%#&!tr*ziz34rkvmc8#l2('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -88,12 +88,23 @@ WSGI_APPLICATION = 'JetBridgeTest.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    #     'TEST': {
+    #         'NAME': os.path.join(BASE_DIR, 'test.sqlite3')
+    #     }
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
         'TEST': {
-            'NAME': os.path.join(BASE_DIR, 'test.sqlite3')
-        }
+            'NAME': 'test'
+        },
+        'USER': 'postgres',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 

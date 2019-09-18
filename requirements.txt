@@ -1,4 +1,7 @@
+django
 django-timezone-field
 djangorestframework
 drf-yasg
 django-filter
+psycopg2-binary
+packaging
